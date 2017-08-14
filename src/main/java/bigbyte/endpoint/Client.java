@@ -1,5 +1,7 @@
 package bigbyte.endpoint;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 
 import bigbyte.ClientHandler;
@@ -15,8 +17,8 @@ import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 
 /**
- * 传输大于1024长度的字节，客户端 封装数据包，定义数据长度以及内容体
- * 
+ * 传输大于8192长度的字节，客户端 封装数据包，定义数据长度以及内容体
+ * http://blog.csdn.net/linfenliang/article/details/39374815
  * @author Annie
  *
  */
@@ -116,6 +118,17 @@ public final class Client {
 				+"有时，孤独会像是洪水般扑天盖地卷来，湮灭一切；自己像是断代一样，被埋在世纪的最底层，看不到光与影，一瞬间失掉了所有。";
 		Client c = new Client();
 		System.err.println("字符串长度："+str.length());
-		c.beforeStart(str).start();
+		File file = new File("F:\\test.txt");
+		String s = "";
+		try(FileInputStream in = new FileInputStream(file)){
+			byte[]b = new byte[1024];
+			while(in.read(b)!=-1){
+				s = new String(b)+s;
+			}
+		}catch(Exception e){
+			
+		}
+		System.err.println("文件字符串长度："+s.length());
+		c.beforeStart(s).start();
 	}
 }

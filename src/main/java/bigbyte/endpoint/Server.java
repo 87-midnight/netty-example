@@ -14,9 +14,10 @@ import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 
 /**
- * 大于1024字节的数据会被netty默认分包传输，
+ * 大于8192字节的数据会被netty默认分包传输，
  * 需要使用LengthFieldBasedFrameDecoder来
  * 制定协议，制定协议格式
+ * http://blog.csdn.net/linfenliang/article/details/39374815
  * @author Annie
  *
  */
