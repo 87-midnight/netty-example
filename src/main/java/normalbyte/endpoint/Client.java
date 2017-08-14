@@ -1,6 +1,6 @@
 package normalbyte.endpoint;
 /**
- * 普通字节传输（小于1024）例如发送16进制的数据
+ * 普通字节传输（小于8192）例如发送16进制的数据
  * @author Annie
  *
  */
