@@ -5,6 +5,9 @@ package normalbyte.endpoint;
  *
  */
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelFuture;
@@ -20,7 +23,7 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 import normalbyte.ClientHandler;
 
 /**
- * 普通字节传输（小于1024）,例如发送16进制的字符串
+ * 普通字节传输（小于8192）,例如发送16进制大于8192字节的字符串文件流
  * 
  * @author Annie
  *
@@ -35,7 +38,7 @@ public class Client {
 		byte[] binaryByte = msg.toString().getBytes();
 		// 将二进制转换成16进制字符串
 		this.hexDump = ByteBufUtil.hexDump(binaryByte);
-		System.err.println("初始化16进制：" + this.hexDump);
+		System.err.println("初始化16进制：" + this.hexDump+"\n16进制字符串的长度："+this.hexDump.length());
 		return this;
 	}
 
@@ -67,6 +70,18 @@ public class Client {
 	}
 
 	public static void main(String[] args) {
-		new Client().beforeStart(new String("turn on the light")).run();
+		File file = new File("F:\\test.txt");
+		String s = "";
+		try(FileInputStream in = new FileInputStream(file)){
+			byte[]b = new byte[1024];
+			while(in.read(b)!=-1){
+				s = new String(b)+s;
+			}
+		}catch(Exception e){
+			
+		}
+		System.err.println("文件字符串长度："+s.length());
+//		new Client().beforeStart(new String("turn on the light")).run();
+		new Client().beforeStart(s).run();
 	}
 }

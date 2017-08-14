@@ -29,8 +29,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter{
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		String hexStr = msg.toString();
-		System.err.println("16进制字节："+hexStr);
-		System.err.println("其对应的执行命令："+new String(ByteBufUtil.decodeHexDump(hexStr)));
+//		System.err.println("16进制字节："+hexStr);
+//		System.err.println("其对应的执行命令："+new String(ByteBufUtil.decodeHexDump(hexStr)));
+		System.err.println("客户端发送大文本文件流："+new String(ByteBufUtil.decodeHexDump(hexStr)));
 	}
 
 	@Override

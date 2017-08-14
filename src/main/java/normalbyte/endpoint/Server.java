@@ -14,7 +14,7 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 import normalbyte.ServerHandler;
 
 /**
- * 普通字节传输（小于8192）,例如发送16进制的字符串
+ * 普通字节传输（小于8192字节）,例如发送16进制且小于8192字节的字符串
  * @author Annie
  *
  */
