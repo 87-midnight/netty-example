@@ -9,6 +9,12 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.12.Final</version>
 		</dependency>
+	  <dependency>
+		  <groupId>org.projectlombok</groupId>
+		  <artifactId>lombok</artifactId>
+		  <optional>true</optional>
+		  <scope>provided</scope>
+	  </dependency>
 	</dependencies>
 	<build>
 		<pluginManagement>
